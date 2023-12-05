@@ -4,7 +4,6 @@
 
 using namespace std;
 
-
 void Teste1(){
     int n = 10;
     int x;

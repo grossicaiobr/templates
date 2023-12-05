@@ -9,36 +9,36 @@ template <typename Type>
 
 class Vetor{
 public:
-    Vetor(int n) : _tamanho(n) {
-        _data.resize(n);
-    };
-    Vetor(const Vetor &outro_vetor) : _tamanho(outro_vetor._tamanho), _data(outro_vetor._data) {};
+    Vetor(int n) : _tamanho(n){}
+    Vetor(const Vetor &outro_vetor) : _elementos(outro_vetor._elementos), _tamanho(outro_vetor._tamanho){}
     ~Vetor() {
-        for (auto it = _data.rbegin(); it != _data.rend(); it--){
-            _data.pop_back();
-            _tamanho --;
-        } 
-    };
+        _elementos.clear();
+    }
 
 
     void AdicionaElemento(Type elemento){
-        _data.push_back(elemento);
-    };
+        if(_elementos.size() == _tamanho){
+            return;
+        }
+        else{
+            _elementos.push_back(elemento);
+        }
+    }
     void SetElemento(int n, Type elemento){
-        _data.assign(n, elemento);
-    };  
+        _elementos.at( n ) = elemento;
+    }
     Type GetElemento(int n){
-        return _data.at(n);
-    };
+        return _elementos.at(n);
+    }
     void Imprime(){
-        for (Type it:_data)
+        for (Type it:_elementos)
             cout << it << " ";
         cout << endl;
-    };
+    }
 
     private:
         int _tamanho;
-        vector<Type> _data;
+        vector<Type> _elementos;
 };
 
 
